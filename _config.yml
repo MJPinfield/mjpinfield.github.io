@@ -1,8 +1,8 @@
 # Site settings
 title: MJPinfield
-email: your-email@domain.com
+email: code@mjpinfield.co.uk
 description: >-
-  Personal website and portfolio of MJ Pinfield
+  Personal website and portfolio of MJPinfield
 baseurl: ""
 url: "https://mjpinfield.github.io"
 
