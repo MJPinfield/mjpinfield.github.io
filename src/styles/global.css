@@ -38,6 +38,14 @@
   color: var(--color-crust);
 }
 
+/* Streaming entrance — only pre-hidden when JS is active, so
+   no-JS / reduced-motion users still see the full content */
+.js [data-stream],
+.js [data-fade],
+.js [data-hide] {
+  opacity: 0;
+}
+
 .cursor-blink {
   animation: blink 1.1s step-end infinite;
 }

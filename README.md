@@ -6,7 +6,7 @@ Personal site of Max Pinfield — Security Engineer. Built with Astro and Tailwi
 
 ## Tech Stack
 
-- **Framework**: Astro (static output, zero JS shipped)
+- **Framework**: Astro (static output, one small inline script for the streaming text effect)
 - **Styling**: Tailwind CSS v4 (via `@tailwindcss/vite`)
 - **Theme**: Catppuccin Mocha, JetBrains Mono (self-hosted via Fontsource)
 - **Hosting**: GitHub Pages with custom domain, deployed via GitHub Actions

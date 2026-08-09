@@ -2,11 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 
 const skillGroups = [
-  { name: 'engineering', color: 'text-mauve', items: ['Python', 'TypeScript', 'FastAPI', 'Docker'] },
+  { name: 'engineering', color: 'text-mauve', items: ['Python', 'TypeScript', 'FastAPI', 'Hono', 'Astro', 'Docker'] },
   { name: 'agentic & ai', color: 'text-blue', items: ['LLM engineering', 'Strands Agents', 'Agentic SAST & evals'] },
   { name: 'data', color: 'text-teal', items: ['pandas', 'DuckDB', 'PostgreSQL', 'scikit-learn'] },
-  { name: 'cloud & infra', color: 'text-peach', items: ['AWS', 'Cloudflare', 'Kubernetes', 'OpenTofu'] },
+  { name: 'cloud & infra', color: 'text-peach', items: ['AWS', 'Cloudflare', 'Kubernetes', 'OpenTofu', 'Ansible'] },
   { name: 'secops', color: 'text-green', items: ['Splunk', 'Microsoft Sentinel', 'Elastic', 'M365 Defender'] },
+];
+
+const stats = [
+  { key: 'education', value: 'BSc Computer Science, Royal Holloway' },
+  { key: 'experience', value: '5 years (since June 2021)' },
+  { key: 'current', value: 'Security Engineer @ a hedge fund' },
+  { key: 'focus', value: 'python · agentic systems · security' },
 ];
 ---
 
@@ -28,20 +35,23 @@ const skillGroups = [
         </div>
 
         <div class="p-6 sm:p-10">
-          <p class="text-sm text-green">$ whoami</p>
-          <h1 class="mt-4 text-4xl font-bold tracking-tight text-text sm:text-6xl">
+          <p id="cmd-line" data-hide class="text-sm text-green">
+            $ <span id="cmd" data-stream="chars">whoami</span>
+          </p>
+          <h1 id="hero-name" data-stream="words" class="mt-4 text-4xl font-bold tracking-tight text-text sm:text-6xl">
             Max Pinfield
           </h1>
-          <p class="mt-4 text-lg font-medium text-mauve sm:text-xl">
+          <p id="hero-role" data-stream="words" class="mt-4 text-lg font-medium text-mauve sm:text-xl">
             Security Engineer
           </p>
-          <p class="mt-6 max-w-2xl leading-relaxed text-subtext1">
-            5 years building security tooling in financial services: Python
-            software engineering, agentic systems, and embedding with teams to
-            fix issues at the source.
+          <p id="hero-tagline" data-stream="words" class="mt-6 max-w-2xl leading-relaxed text-subtext1">
+            5 years building security tooling in financial services: Python software engineering, agentic systems, and embedding with teams to fix issues at the source.
           </p>
 
-          <div class="mt-10 flex flex-wrap items-center gap-4">
+          <p id="connect-line" data-hide class="mt-8 text-sm text-green">
+            $ <span id="connect-cmd" data-stream="chars">./connect --linkedin</span>
+          </p>
+          <div id="hero-cta" data-fade class="mt-4">
             <a
               href="https://linkedin.com/in/mjpinfield"
               target="_blank"
@@ -55,7 +65,7 @@ const skillGroups = [
             </a>
           </div>
 
-          <p class="mt-10 text-sm text-green">
+          <p id="hero-prompt" data-fade class="mt-8 text-sm text-green">
             $ <span class="cursor-blink text-text">▊</span>
           </p>
         </div>
@@ -64,22 +74,15 @@ const skillGroups = [
 
     <!-- About -->
     <section class="border-t border-surface0 py-20">
-      <h2 class="text-2xl font-bold text-text"><span class="text-mauve">#</span> about</h2>
+      <h2 data-fade data-observe class="text-2xl font-bold text-text"><span class="text-mauve">#</span> about</h2>
 
       <div class="mt-8 grid gap-10 md:grid-cols-5">
         <div class="space-y-4 leading-relaxed text-subtext1 md:col-span-3">
-          <p>
-            Computer Science graduate from Royal Holloway, University of London,
-            working full-time in cyber security since June 2021. Now a Security
-            Engineer at a hedge fund.
+          <p data-stream="words" data-observe>
+            Computer Science graduate from Royal Holloway, University of London, working full-time in cyber security since June 2021. Now a Security Engineer at a hedge fund.
           </p>
-          <p>
-            Most of the job is software engineering — building the Python
-            tooling and automation that security operations run on. Lately
-            that's meant agentic engineering: building LLM-driven systems and
-            working out how to secure them. I also embed with non-security
-            teams to fix their issues at the source rather than patching
-            symptoms.
+          <p data-stream="words" data-observe>
+            Most of the job is software engineering — building the Python tooling and automation that security operations run on. Lately that's meant agentic engineering: building LLM-driven systems and working out how to secure them. I also embed with non-security teams to fix their issues at the source rather than patching symptoms.
           </p>
         </div>
 
@@ -89,22 +92,12 @@ const skillGroups = [
               $ stat max
             </div>
             <dl class="space-y-3 p-4 text-sm">
-              <div>
-                <dt class="text-overlay1">education</dt>
-                <dd class="text-text">BSc Computer Science, Royal Holloway</dd>
-              </div>
-              <div>
-                <dt class="text-overlay1">experience</dt>
-                <dd class="text-text">5 years (since June 2021)</dd>
-              </div>
-              <div>
-                <dt class="text-overlay1">current</dt>
-                <dd class="text-text">Security Engineer @ a hedge fund</dd>
-              </div>
-              <div>
-                <dt class="text-overlay1">focus</dt>
-                <dd class="text-text">python · agentic systems · security</dd>
-              </div>
+              {stats.map((stat, i) => (
+                <div data-fade data-observe data-delay={i * 90}>
+                  <dt class="text-overlay1">{stat.key}</dt>
+                  <dd class="text-text">{stat.value}</dd>
+                </div>
+              ))}
             </dl>
           </div>
         </div>
@@ -113,23 +106,49 @@ const skillGroups = [
 
     <!-- Skills -->
     <section class="border-t border-surface0 py-20">
-      <h2 class="text-2xl font-bold text-text"><span class="text-mauve">#</span> skills</h2>
+      <h2 data-fade data-observe class="text-2xl font-bold text-text"><span class="text-mauve">#</span> skills</h2>
 
       <div class="mt-8 space-y-6">
         {skillGroups.map((group) => (
           <div>
-            <h3 class:list={['text-sm font-semibold tracking-wide', group.color]}>
+            <h3 data-fade data-observe class:list={['text-sm font-semibold tracking-wide', group.color]}>
               {group.name}
             </h3>
             <ul class="mt-3 flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <li class="rounded-md border border-surface0 bg-base px-3 py-1.5 text-sm text-subtext1 transition hover:border-surface2 hover:text-text">
+              {group.items.map((item, i) => (
+                <li
+                  data-fade
+                  data-observe
+                  data-delay={i * 45}
+                  class="rounded-md border border-surface0 bg-base px-3 py-1.5 text-sm text-subtext1 transition hover:border-surface2 hover:text-text"
+                >
                   {item}
                 </li>
               ))}
             </ul>
           </div>
         ))}
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="border-t border-surface0 py-20">
+      <h2 data-fade data-observe class="text-2xl font-bold text-text"><span class="text-mauve">#</span> contact</h2>
+      <p data-stream="words" data-observe class="mt-6 max-w-2xl leading-relaxed text-subtext1">
+        Want to talk security engineering, or agentic systems and how to secure them? LinkedIn is the best place to find me.
+      </p>
+      <div data-fade data-observe data-delay="150" class="mt-6">
+        <a
+          href="https://linkedin.com/in/mjpinfield"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-lg border border-mauve px-5 py-3 font-semibold text-mauve transition hover:bg-mauve hover:text-crust"
+        >
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          Connect on LinkedIn
+        </a>
       </div>
     </section>
 
@@ -149,3 +168,114 @@ const skillGroups = [
     </div>
   </footer>
 </Layout>
+
+<script is:inline>
+  (function () {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const animated = document.querySelectorAll('[data-stream], [data-fade], [data-hide]');
+
+    // Reduced motion: reveal everything instantly, skip the show
+    if (reduceMotion) {
+      animated.forEach((el) => (el.style.opacity = '1'));
+      return;
+    }
+
+    // Each stream gets its own trailing cursor (streams can overlap)
+    function makeCursor() {
+      const cursor = document.createElement('span');
+      cursor.className = 'cursor-blink text-text';
+      cursor.textContent = '▊';
+      return cursor;
+    }
+
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    const jitter = (base) => base * (0.4 + Math.random());
+
+    // Lock in the element's final height so streaming doesn't shift layout
+    function reserve(el) {
+      el.style.minHeight = el.offsetHeight + 'px';
+      el.style.opacity = '1';
+    }
+    function release(el) {
+      el.style.minHeight = '';
+    }
+
+    async function typeChars(el, speed) {
+      const text = el.textContent.trim();
+      reserve(el);
+      el.textContent = '';
+      const cursor = makeCursor();
+      el.appendChild(cursor);
+      for (const ch of text) {
+        cursor.before(document.createTextNode(ch));
+        await sleep(jitter(speed));
+      }
+      cursor.remove();
+      release(el);
+    }
+
+    async function streamWords(el, speed) {
+      const words = el.textContent.trim().split(/\s+/);
+      reserve(el);
+      el.textContent = '';
+      const cursor = makeCursor();
+      el.appendChild(cursor);
+      for (let i = 0; i < words.length; i++) {
+        cursor.before(document.createTextNode((i === 0 ? '' : ' ') + words[i]));
+        await sleep(jitter(speed));
+      }
+      cursor.remove();
+      release(el);
+    }
+
+    function fadeIn(el, delay = 0) {
+      el.style.transform = 'translateY(6px)';
+      requestAnimationFrame(() => {
+        el.style.transition = 'opacity .45s ease, transform .45s ease';
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }, delay);
+      });
+    }
+
+    // Hero: runs once on load, like a real terminal session
+    async function runHero() {
+      document.getElementById('cmd-line').style.opacity = '1';
+      await typeChars(document.getElementById('cmd'), 80);
+      await sleep(250);
+      await streamWords(document.getElementById('hero-name'), 110);
+      await streamWords(document.getElementById('hero-role'), 90);
+      await streamWords(document.getElementById('hero-tagline'), 40);
+      await sleep(300);
+      document.getElementById('connect-line').style.opacity = '1';
+      await typeChars(document.getElementById('connect-cmd'), 55);
+      await sleep(300);
+      fadeIn(document.getElementById('hero-cta'));
+      await sleep(500);
+      fadeIn(document.getElementById('hero-prompt'));
+    }
+
+    // Everything below the fold: stream/fade when scrolled into view.
+    // Word-streams queue up so paragraphs stream in reading order.
+    let streamQueue = Promise.resolve();
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          io.unobserve(entry.target);
+          const el = entry.target;
+          if (el.dataset.stream === 'words') {
+            streamQueue = streamQueue.then(() => streamWords(el, 30));
+          } else {
+            fadeIn(el, Number(el.dataset.delay || 0));
+          }
+        }
+      },
+      { threshold: 0.25, rootMargin: '0px 0px -8% 0px' }
+    );
+    document.querySelectorAll('[data-observe]').forEach((el) => io.observe(el));
+
+    runHero();
+  })();
+</script>
