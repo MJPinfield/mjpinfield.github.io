@@ -1,15 +1,17 @@
 {
-  "name": "mjpinfield-portfolio",
-  "version": "1.0.0",
-  "description": "Personal portfolio website for MJ Pinfield",
+  "name": "mjpinfield.github.io",
+  "type": "module",
+  "version": "2.0.0",
+  "description": "Personal site of Max Pinfield — Security Engineer",
   "scripts": {
-    "build-css": "tailwindcss -i ./src/input.css -o ./_site/assets/css/style.css --watch",
-    "dev": "bundle exec jekyll serve --livereload",
-    "build": "bundle exec jekyll build"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
-  "devDependencies": {
-    "tailwindcss": "^3.3.0",
-    "@tailwindcss/forms": "^0.5.3",
-    "@tailwindcss/typography": "^0.5.9"
+  "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.2.0",
+    "tailwindcss": "^4.3.3"
   }
 }

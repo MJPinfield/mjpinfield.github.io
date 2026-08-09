@@ -1,0 +1,151 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const skillGroups = [
+  { name: 'engineering', color: 'text-mauve', items: ['Python', 'TypeScript', 'FastAPI', 'Docker'] },
+  { name: 'agentic & ai', color: 'text-blue', items: ['LLM engineering', 'Strands Agents', 'Agentic SAST & evals'] },
+  { name: 'data', color: 'text-teal', items: ['pandas', 'DuckDB', 'PostgreSQL', 'scikit-learn'] },
+  { name: 'cloud & infra', color: 'text-peach', items: ['AWS', 'Cloudflare', 'Kubernetes', 'OpenTofu'] },
+  { name: 'secops', color: 'text-green', items: ['Splunk', 'Microsoft Sentinel', 'Elastic', 'M365 Defender'] },
+];
+---
+
+<Layout
+  title="Max Pinfield — Security Engineer"
+  description="Max Pinfield is a Security Engineer with 5 years of experience building security tooling in financial services. Python software engineering, agentic systems, and security."
+>
+  <main class="mx-auto max-w-4xl px-4 sm:px-6">
+
+    <!-- Hero -->
+    <section class="flex min-h-svh items-center py-16">
+      <div class="w-full overflow-hidden rounded-xl border border-surface0 bg-base shadow-2xl shadow-black/50">
+        <!-- Window chrome -->
+        <div class="flex items-center gap-2 border-b border-surface0 bg-mantle px-4 py-3">
+          <span class="h-3 w-3 rounded-full bg-red"></span>
+          <span class="h-3 w-3 rounded-full bg-yellow"></span>
+          <span class="h-3 w-3 rounded-full bg-green"></span>
+          <span class="ml-3 text-xs text-subtext0">max@mjpinfield: ~</span>
+        </div>
+
+        <div class="p-6 sm:p-10">
+          <p class="text-sm text-green">$ whoami</p>
+          <h1 class="mt-4 text-4xl font-bold tracking-tight text-text sm:text-6xl">
+            Max Pinfield
+          </h1>
+          <p class="mt-4 text-lg font-medium text-mauve sm:text-xl">
+            Security Engineer
+          </p>
+          <p class="mt-6 max-w-2xl leading-relaxed text-subtext1">
+            5 years building security tooling in financial services: Python
+            software engineering, agentic systems, and embedding with teams to
+            fix issues at the source.
+          </p>
+
+          <div class="mt-10 flex flex-wrap items-center gap-4">
+            <a
+              href="https://linkedin.com/in/mjpinfield"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-lg bg-mauve px-5 py-3 font-semibold text-crust transition hover:bg-lavender hover:shadow-lg hover:shadow-mauve/25"
+            >
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              Connect on LinkedIn
+            </a>
+          </div>
+
+          <p class="mt-10 text-sm text-green">
+            $ <span class="cursor-blink text-text">▊</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="border-t border-surface0 py-20">
+      <h2 class="text-2xl font-bold text-text"><span class="text-mauve">#</span> about</h2>
+
+      <div class="mt-8 grid gap-10 md:grid-cols-5">
+        <div class="space-y-4 leading-relaxed text-subtext1 md:col-span-3">
+          <p>
+            Computer Science graduate from Royal Holloway, University of London,
+            working full-time in cyber security since June 2021. Now a Security
+            Engineer at a hedge fund.
+          </p>
+          <p>
+            Most of the job is software engineering — building the Python
+            tooling and automation that security operations run on. Lately
+            that's meant agentic engineering: building LLM-driven systems and
+            working out how to secure them. I also embed with non-security
+            teams to fix their issues at the source rather than patching
+            symptoms.
+          </p>
+        </div>
+
+        <div class="md:col-span-2">
+          <div class="overflow-hidden rounded-lg border border-surface0 bg-base">
+            <div class="border-b border-surface0 bg-mantle px-4 py-2 text-xs text-subtext0">
+              $ stat max
+            </div>
+            <dl class="space-y-3 p-4 text-sm">
+              <div>
+                <dt class="text-overlay1">education</dt>
+                <dd class="text-text">BSc Computer Science, Royal Holloway</dd>
+              </div>
+              <div>
+                <dt class="text-overlay1">experience</dt>
+                <dd class="text-text">5 years (since June 2021)</dd>
+              </div>
+              <div>
+                <dt class="text-overlay1">current</dt>
+                <dd class="text-text">Security Engineer @ a hedge fund</dd>
+              </div>
+              <div>
+                <dt class="text-overlay1">focus</dt>
+                <dd class="text-text">python · agentic systems · security</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="border-t border-surface0 py-20">
+      <h2 class="text-2xl font-bold text-text"><span class="text-mauve">#</span> skills</h2>
+
+      <div class="mt-8 space-y-6">
+        {skillGroups.map((group) => (
+          <div>
+            <h3 class:list={['text-sm font-semibold tracking-wide', group.color]}>
+              {group.name}
+            </h3>
+            <ul class="mt-3 flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <li class="rounded-md border border-surface0 bg-base px-3 py-1.5 text-sm text-subtext1 transition hover:border-surface2 hover:text-text">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-surface0">
+    <div class="mx-auto flex max-w-4xl items-center justify-between px-4 py-6 text-sm text-subtext0 sm:px-6">
+      <span>mjpinfield.co.uk</span>
+      <a
+        href="https://linkedin.com/in/mjpinfield"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition hover:text-mauve"
+      >
+        linkedin ↗
+      </a>
+    </div>
+  </footer>
+</Layout>
